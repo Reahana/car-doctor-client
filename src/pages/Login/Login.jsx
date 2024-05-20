@@ -17,7 +17,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password)
+        //console.log(name, email, password)
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -33,10 +33,11 @@ const Login = () => {
                     },
                     body: JSON.stringify(loggedUser)
                  })
-                 .then(res=>res,json())
+                 .then(res=>res.json())
                  .then(data=>{
-                    console.log('jwt',data);
-                    navigate(from,{replace:true})
+                    console.log('jwt response', data);
+                    localStorage.setItem('car-token',data.token)
+                    navigate(from, {replace:true})
                  })
             })
             .catch(error => console.log(error));
