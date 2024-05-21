@@ -9,7 +9,7 @@ const Bookings = () => {
     const [bookings, setBookings] = useState([]);
     const navigate = useNavigate();
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    const url = `https://car-doctor-server-kappa-swart.vercel.app/bookings?email=${user?.email}`;
     useEffect(() => {
         fetch(url, {
             method: 'GET',
@@ -32,7 +32,7 @@ navigate('/')
     const handleDelete = id => {
         const proceed = confirm('Are You sure you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/bookings/${id}`, {
+            fetch(`https://car-doctor-server-kappa-swart.vercel.app/bookings/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -48,7 +48,7 @@ navigate('/')
     }
 
     const handleBookingConfirm = id => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://car-doctor-server-kappa-swart.vercel.app/bookings/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
